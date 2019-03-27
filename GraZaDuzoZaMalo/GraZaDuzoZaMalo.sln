@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraMonolitycznie", "GraMonolitycznie\GraMonolitycznie.csproj", "{D0183326-1662-40AC-91D4-C7C1073C2AF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloConsoleBatch", "HelloConsoleBatch\HelloConsoleBatch.csproj", "{ED4B6EE3-1140-4C70-887C-11C6A4B3F458}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D0183326-1662-40AC-91D4-C7C1073C2AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0183326-1662-40AC-91D4-C7C1073C2AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0183326-1662-40AC-91D4-C7C1073C2AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED4B6EE3-1140-4C70-887C-11C6A4B3F458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED4B6EE3-1140-4C70-887C-11C6A4B3F458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED4B6EE3-1140-4C70-887C-11C6A4B3F458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED4B6EE3-1140-4C70-887C-11C6A4B3F458}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

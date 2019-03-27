@@ -4,26 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraMonolitycznie
+namespace HelloConsoleBatch
 {
     class Program
     {
         static void Main(string[] args)
         {
+          
             //deklaracja imienia
             Console.WriteLine("Witaj");
             Console.Write("Podaj swoje imie: ");
-            string imie = Console.ReadLine();
+            string imie = args[0];
             //Console.WriteLine($"Witaj {imie}!");
 
             //deklaracja nazwiska
             Console.Write("Podaj nazwisko: ");
-            string nazwisko = Console.ReadLine();
-            
+            string nazwisko = args[1];
+
 
             //potwierdzenie tożsamości
             Console.WriteLine($"Czy aby napewno nazywasz się {imie} {nazwisko}?");
-            string potwierdzenie = Console.ReadLine();
+            string potwierdzenie = args[2];
             if (potwierdzenie == "nie")
             {
                 Console.WriteLine("Powtórz jeszcze raz wpisywanie danych :(");
@@ -35,7 +36,7 @@ namespace GraMonolitycznie
 
                 //deklaracja i konwertowanie wieku
                 Console.WriteLine("Teraz podaj swoj wiek: ");
-                int wiek = Convert.ToInt32(Console.ReadLine());
+                int wiek = Convert.ToInt32(args[3]);
 
                 if (wiek > 0 && wiek < 67)
                 {
@@ -55,8 +56,7 @@ namespace GraMonolitycznie
             }
             else
                 Console.WriteLine("Błędne dane!!");
-                Console.ReadKey();
-
+            Console.ReadKey();
         }
     }
 }
