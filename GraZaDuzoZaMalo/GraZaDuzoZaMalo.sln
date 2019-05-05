@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloConsoleVBDialog", "Hel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWinFormsApp", "HelloWinFormsApp\HelloWinFormsApp.csproj", "{82DA724F-6514-467D-A458-5F128941FA43}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraProceduralnie", "GraProceduralnie\GraProceduralnie.csproj", "{084A1FB6-0AB7-4C66-BD4D-4C733D41EC2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{82DA724F-6514-467D-A458-5F128941FA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82DA724F-6514-467D-A458-5F128941FA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82DA724F-6514-467D-A458-5F128941FA43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{084A1FB6-0AB7-4C66-BD4D-4C733D41EC2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{084A1FB6-0AB7-4C66-BD4D-4C733D41EC2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{084A1FB6-0AB7-4C66-BD4D-4C733D41EC2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{084A1FB6-0AB7-4C66-BD4D-4C733D41EC2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
