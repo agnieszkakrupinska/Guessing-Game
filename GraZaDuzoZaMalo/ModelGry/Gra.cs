@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ModelGry
 {
-    public class Gra
+    public partial class Gra
     {
-        //subtypes
+        // subtypes
+        public enum Odp { ZaMalo = -1, Trafiono = 0, ZaDuzo = 1 }
+        public enum State { Trwa, Poddana, Odgadnieta }
 
-       public enum Odp { ZaMalo = -1, Trafiono = 0, ZaDuzo = 1}
-       public enum State { Trwa, Poddana, Odgadnieta}
-        //fields
-
+        // fields
         public readonly int ZakresOd;
         public readonly int ZakresDo;
 
@@ -29,23 +29,25 @@ namespace ModelGry
 
         public int LicznikRuchow { get; private set; } = 0;
 
-        //constructors
+        // historia gry
 
+        // constructors
         public Gra(int min, int max)
         {
             ZakresOd = min;
             ZakresDo = max;
-            //losowanie
+       
             wylosowana = Losuj(ZakresOd, ZakresDo);
+           
             StanGry = State.Trwa;
+            historia = new List<Ruch>();
         }
 
         public static int Losuj(int min = 1, int max = 100)
         {
-            
+
             if (min > max)
-            {
-                //swap
+            { //swap
                 int temp = min;
                 min = max;
                 max = temp;
@@ -54,26 +56,30 @@ namespace ModelGry
             return generator.Next(min, max + 1);
         }
 
-        //methods
+        // methods
 
         public Odp Ocena(int liczba)
         {
             LicznikRuchow++;
+            Odp odp;
             if (liczba < wylosowana)
-                return Odp.ZaMalo;
+                odp = Odp.ZaMalo;
             else if (liczba > wylosowana)
-                return Odp.ZaDuzo;
+                odp = Odp.ZaDuzo;
             else
             {
                 StanGry = State.Odgadnieta;
-                return Odp.Trafiono;
+                odp = Odp.Trafiono;
             }
-                
+            historia.Add(new Ruch(liczba, odp));
+
+            return odp;
         }
 
         public void Poddaj()
         {
-            StanGry=State.Poddana;
+            StanGry = State.Poddana;
         }
+
     }
 }
