@@ -38,10 +38,12 @@
             this.textBoxZakresOd = new System.Windows.Forms.TextBox();
             this.buttonPrzerwij = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.labelTextPropozycja = new System.Windows.Forms.Label();
+            this.textBoxPropozycja = new System.Windows.Forms.MaskedTextBox();
             this.buttonSprawdz = new System.Windows.Forms.Button();
             this.losowanieStart = new System.Windows.Forms.GroupBox();
+            this.wynik = new System.Windows.Forms.Label();
+            this.buttonHistoria = new System.Windows.Forms.Button();
             this.groupBoxLosuj.SuspendLayout();
             this.losowanieStart.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +122,7 @@
             this.textBoxZakresOd.Name = "textBoxZakresOd";
             this.textBoxZakresOd.Size = new System.Drawing.Size(68, 20);
             this.textBoxZakresOd.TabIndex = 0;
+            this.textBoxZakresOd.TextChanged += new System.EventHandler(this.textBoxZakresOd_TextChanged);
             // 
             // buttonPrzerwij
             // 
@@ -135,21 +138,23 @@
             // 
             this.timer1.Enabled = true;
             // 
-            // label1
+            // labelTextPropozycja
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Podaj propozycję: ";
+            this.labelTextPropozycja.AutoSize = true;
+            this.labelTextPropozycja.Location = new System.Drawing.Point(2, 30);
+            this.labelTextPropozycja.Name = "labelTextPropozycja";
+            this.labelTextPropozycja.Size = new System.Drawing.Size(94, 13);
+            this.labelTextPropozycja.TabIndex = 4;
+            this.labelTextPropozycja.Text = "Podaj propozycję: ";
+            this.labelTextPropozycja.Click += new System.EventHandler(this.label1_Click);
             // 
-            // maskedTextBox1
+            // textBoxPropozycja
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(100, 27);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(48, 20);
-            this.maskedTextBox1.TabIndex = 5;
+            this.textBoxPropozycja.Location = new System.Drawing.Point(100, 27);
+            this.textBoxPropozycja.Name = "textBoxPropozycja";
+            this.textBoxPropozycja.Size = new System.Drawing.Size(48, 20);
+            this.textBoxPropozycja.TabIndex = 5;
+            this.textBoxPropozycja.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.textBoxPropozycja_MaskInputRejected);
             // 
             // buttonSprawdz
             // 
@@ -159,33 +164,56 @@
             this.buttonSprawdz.TabIndex = 6;
             this.buttonSprawdz.Text = "Sprawdź";
             this.buttonSprawdz.UseVisualStyleBackColor = true;
+            this.buttonSprawdz.Click += new System.EventHandler(this.buttonSprawdz_Click);
             // 
             // losowanieStart
             // 
-            this.losowanieStart.Controls.Add(this.label1);
+            this.losowanieStart.Controls.Add(this.wynik);
+            this.losowanieStart.Controls.Add(this.labelTextPropozycja);
             this.losowanieStart.Controls.Add(this.buttonSprawdz);
-            this.losowanieStart.Controls.Add(this.maskedTextBox1);
+            this.losowanieStart.Controls.Add(this.textBoxPropozycja);
             this.losowanieStart.Location = new System.Drawing.Point(12, 154);
             this.losowanieStart.Name = "losowanieStart";
-            this.losowanieStart.Size = new System.Drawing.Size(229, 64);
+            this.losowanieStart.Size = new System.Drawing.Size(229, 84);
             this.losowanieStart.TabIndex = 7;
             this.losowanieStart.TabStop = false;
             this.losowanieStart.Text = "Zaczęto losowanie!";
             this.losowanieStart.Visible = false;
             this.losowanieStart.Enter += new System.EventHandler(this.groupBox1_Enter_1);
             // 
+            // wynik
+            // 
+            this.wynik.AutoSize = true;
+            this.wynik.Location = new System.Drawing.Point(2, 61);
+            this.wynik.Name = "wynik";
+            this.wynik.Size = new System.Drawing.Size(73, 13);
+            this.wynik.TabIndex = 7;
+            this.wynik.Text = "za dużo/mało";
+            this.wynik.Visible = false;
+            // 
+            // buttonHistoria
+            // 
+            this.buttonHistoria.Location = new System.Drawing.Point(12, 255);
+            this.buttonHistoria.Name = "buttonHistoria";
+            this.buttonHistoria.Size = new System.Drawing.Size(75, 23);
+            this.buttonHistoria.TabIndex = 8;
+            this.buttonHistoria.Text = "Historia";
+            this.buttonHistoria.UseVisualStyleBackColor = true;
+            this.buttonHistoria.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(265, 368);
+            this.Controls.Add(this.buttonHistoria);
             this.Controls.Add(this.losowanieStart);
             this.Controls.Add(this.buttonPrzerwij);
             this.Controls.Add(this.groupBoxLosuj);
             this.Controls.Add(this.buttonNowaGra);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Gra Za Dużo Za Mało";
             this.groupBoxLosuj.ResumeLayout(false);
             this.groupBoxLosuj.PerformLayout();
             this.losowanieStart.ResumeLayout(false);
@@ -205,9 +233,11 @@
         private System.Windows.Forms.TextBox textBoxZakresOd;
         private System.Windows.Forms.Button buttonPrzerwij;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Label labelTextPropozycja;
+        private System.Windows.Forms.MaskedTextBox textBoxPropozycja;
         private System.Windows.Forms.Button buttonSprawdz;
         private System.Windows.Forms.GroupBox losowanieStart;
+        private System.Windows.Forms.Label wynik;
+        private System.Windows.Forms.Button buttonHistoria;
     }
 }

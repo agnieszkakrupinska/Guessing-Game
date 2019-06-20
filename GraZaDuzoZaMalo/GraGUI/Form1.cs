@@ -14,7 +14,10 @@ namespace GraGUI
 {
     public partial class Form1 : Form
     {
-        private Gra g;
+       // private Gra g;
+
+        int rand;
+        int ruchy;
 
         public Form1()
         {
@@ -25,6 +28,7 @@ namespace GraGUI
         {
             groupBoxLosuj.Visible = true;
             buttonNowaGra.Enabled = false;
+
         }
 
         private void buttonWylosuj_Click(object sender, EventArgs e)
@@ -33,14 +37,26 @@ namespace GraGUI
             int a = int.Parse(textBoxZakresOd.Text);
             int b = int.Parse(textBoxZakresDo.Text);
 
-            g = new Gra(a, b);
+            if (b > a)
+            { //swap
+                int temp = b;
+                b = a;
+                a = temp;
+            }
+            Random generator = new Random();
+            rand = generator.Next(b, a + 1);
+            //MessageBox.Show(rand.ToString());
 
            losowanieStart.Visible = true;
+           groupBoxLosuj.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            groupBoxLosuj.Visible = false;
+            groupBoxLosuj.Enabled = true;
+            losowanieStart.Visible = false;
+            buttonNowaGra.Enabled = true;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -56,6 +72,52 @@ namespace GraGUI
         private void groupBox1_Enter_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSprawdz_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(rand.ToString());
+            wynik.Visible = true;
+            int propozycja = Convert.ToInt32(textBoxPropozycja.Text);
+            if (propozycja > rand)
+            {
+                wynik.ForeColor = Color.Red;
+                wynik.Text = "Za dużo";
+                ruchy++;
+            }
+            else
+                if (propozycja < rand)
+            {
+                wynik.ForeColor = Color.Red;
+                wynik.Text = "Za mało";
+                ruchy++;
+            }
+            else
+            {
+                wynik.ForeColor = Color.Green;
+                wynik.Text = "Wygrałeś!";
+                textBoxPropozycja.Enabled = false;
+                buttonSprawdz.Enabled = false;
+                buttonPrzerwij.Enabled = false;
+                buttonHistoria.Visible = true;
+                MessageBox.Show(ruchy.ToString());
+            }
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxZakresOd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPropozycja_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            int propozycja = Convert.ToInt32(textBoxPropozycja);
         }
     }
 }
