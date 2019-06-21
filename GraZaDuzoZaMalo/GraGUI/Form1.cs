@@ -27,7 +27,10 @@ namespace GraGUI
         private void buttonNowaGra_Click(object sender, EventArgs e)
         {
             groupBoxLosuj.Visible = true;
+            groupBoxLosuj.Enabled = true;
             buttonNowaGra.Enabled = false;
+            losowanieStart.Visible = false;
+            
 
         }
 
@@ -48,6 +51,7 @@ namespace GraGUI
             //MessageBox.Show(rand.ToString());
 
            losowanieStart.Visible = true;
+           losowanieStart.Enabled = true;
            groupBoxLosuj.Enabled = false;
         }
 
@@ -57,6 +61,7 @@ namespace GraGUI
             groupBoxLosuj.Enabled = true;
             losowanieStart.Visible = false;
             buttonNowaGra.Enabled = true;
+            wynik.Visible = false;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -100,7 +105,10 @@ namespace GraGUI
                 buttonSprawdz.Enabled = false;
                 buttonPrzerwij.Enabled = false;
                 buttonHistoria.Visible = true;
-                MessageBox.Show(ruchy.ToString());
+                buttonNowaGra.Enabled = true;
+                losowanieStart.Enabled = true;
+
+                //MessageBox.Show(ruchy.ToString());
             }
 
         }
