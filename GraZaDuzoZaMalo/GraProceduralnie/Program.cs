@@ -35,7 +35,7 @@ namespace GraMonolitycznie
             Console.Write(prompt);
             string tekst = Console.ReadLine();
             if (tekst.ToLower() == "x")
-                throw new OperationCanceledException("Wybrano X");
+            throw new OperationCanceledException("Wybrano X");
 
             try
             {
@@ -72,24 +72,24 @@ namespace GraMonolitycznie
             int min = WczytajLiczbe("Podaj zakres od: ");
             int max = WczytajLiczbe("Podaj zakres do: ");
             wylosowana = Losuj(min, max);
-            Console.WriteLine($"Wylosowałem liczbę od {min} do {max}. \nOdgadnij ją");
+            Console.WriteLine($"Wylosowałem liczbę od {min} do {max}. \nOdgadnij ją!");
 
 #if(DEBUG)
-            Console.WriteLine(wylosowana);
+           // Console.WriteLine(wylosowana);
 #endif
             do
             {
                 int propozycja = 0;
                 try
                 {
-                    propozycja = WczytajLiczbe("Podaj swoją propozycje (X aby sie poddać)");
+                    propozycja = WczytajLiczbe("Podaj swoją propozycje (X aby sie poddać): ");
                 }
                 catch(OperationCanceledException)
                 {
                     Console.WriteLine("Wyjście awaryjne - poddałeś się!");
                     break;
                 }
-                Console.WriteLine($"Przyjąłem wartość {propozycja}");
+                Console.WriteLine($"Przyjąłem wartość: {propozycja}");
 
                 string wynik = Ocena(propozycja);
                 Console.WriteLine(wynik);
