@@ -30,13 +30,17 @@ namespace GraGUI
             groupBoxLosuj.Enabled = true;
             buttonNowaGra.Enabled = false;
             losowanieStart.Visible = false;
-            
-
         }
 
         private void buttonWylosuj_Click(object sender, EventArgs e)
         {
             //try-catch
+            if (String.IsNullOrEmpty(textBoxZakresOd.Text) || String.IsNullOrEmpty(textBoxZakresDo.Text))
+            {
+                MessageBox.Show("Nie podałeś poprawnie zakresu!");
+            }
+            else
+            {
             int a = int.Parse(textBoxZakresOd.Text);
             int b = int.Parse(textBoxZakresDo.Text);
 
@@ -53,6 +57,8 @@ namespace GraGUI
            losowanieStart.Visible = true;
            losowanieStart.Enabled = true;
            groupBoxLosuj.Enabled = false;
+
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,33 +89,44 @@ namespace GraGUI
         {
             //MessageBox.Show(rand.ToString());
             wynik.Visible = true;
-            int propozycja = Convert.ToInt32(textBoxPropozycja.Text);
-            if (propozycja > rand)
+            
+            if(String.IsNullOrEmpty(textBoxPropozycja.Text))
             {
                 wynik.ForeColor = Color.Red;
-                wynik.Text = "Za dużo";
-                ruchy++;
-            }
-            else
-                if (propozycja < rand)
-            {
-                wynik.ForeColor = Color.Red;
-                wynik.Text = "Za mało";
+                wynik.Text = "NIE PODANO LICZBY";
                 ruchy++;
             }
             else
             {
-                wynik.ForeColor = Color.Green;
-                wynik.Text = "Wygrałeś!";
-                textBoxPropozycja.Enabled = false;
-                buttonSprawdz.Enabled = false;
-                buttonPrzerwij.Enabled = false;
-                buttonHistoria.Visible = true;
-                buttonNowaGra.Enabled = true;
-                losowanieStart.Enabled = true;
+                int propozycja = Convert.ToInt32(textBoxPropozycja.Text);
+                if (propozycja > rand)
+                {
+                    wynik.ForeColor = Color.Red;
+                    wynik.Text = "Za dużo";
+                    ruchy++;
+                }
+                else
+               if (propozycja < rand)
+                {
+                    wynik.ForeColor = Color.Red;
+                    wynik.Text = "Za mało";
+                    ruchy++;
+                }
+                else
+                {
+                    wynik.ForeColor = Color.Green;
+                    wynik.Text = "Wygrałeś!";
+                    textBoxPropozycja.Enabled = false;
+                    buttonSprawdz.Enabled = false;
+                    buttonPrzerwij.Enabled = false;
+                    buttonHistoria.Visible = true;
+                    buttonNowaGra.Enabled = true;
+                    losowanieStart.Enabled = true;
 
-                //MessageBox.Show(ruchy.ToString());
+                    //MessageBox.Show(ruchy.ToString());
+                }
             }
+           
 
         }
 
