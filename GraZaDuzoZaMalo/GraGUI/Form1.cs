@@ -14,11 +14,9 @@ namespace GraGUI
 {
     public partial class Form1 : Form
     {
-       // private Gra g;
+        private Gra g;
 
-        int rand;
-        int ruchy;
-
+      
         public Form1()
         {
             InitializeComponent();
@@ -27,9 +25,8 @@ namespace GraGUI
         private void buttonNowaGra_Click(object sender, EventArgs e)
         {
             groupBoxLosuj.Visible = true;
-            groupBoxLosuj.Enabled = true;
             buttonNowaGra.Enabled = false;
-            losowanieStart.Visible = false;
+           
         }
 
         private void buttonWylosuj_Click(object sender, EventArgs e)
@@ -43,16 +40,8 @@ namespace GraGUI
             {
             int a = int.Parse(textBoxZakresOd.Text);
             int b = int.Parse(textBoxZakresDo.Text);
-
-            if (b > a)
-            { //swap
-                int temp = b;
-                b = a;
-                a = temp;
-            }
-            Random generator = new Random();
-            rand = generator.Next(b, a + 1);
-            //MessageBox.Show(rand.ToString());
+             
+                g = new Gra(a, b);
 
            losowanieStart.Visible = true;
            losowanieStart.Enabled = true;
@@ -67,7 +56,11 @@ namespace GraGUI
             groupBoxLosuj.Enabled = true;
             losowanieStart.Visible = false;
             buttonNowaGra.Enabled = true;
-            wynik.Visible = false;
+            labelWynik.Visible = false;
+            groupBoxStatystyki.Visible = false;
+            textBoxZakresDo.Text = null;
+            textBoxZakresOd.Text = null;
+            textBoxPropozycja.Text = null;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -87,46 +80,28 @@ namespace GraGUI
 
         private void buttonSprawdz_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(rand.ToString());
-            wynik.Visible = true;
+            labelWynik.Visible = true;
             
-            if(String.IsNullOrEmpty(textBoxPropozycja.Text))
+       
+           int propozycja = Convert.ToInt32(textBoxPropozycja.Text);
+            Gra.Odp odp = g.Ocena(propozycja);
+            switch (odp)
             {
-                wynik.ForeColor = Color.Red;
-                wynik.Text = "NIE PODANO LICZBY";
-                ruchy++;
+                case Gra.Odp.ZaMalo:
+                    labelWynik.Text = "Za mało!";
+                    labelWynik.ForeColor = Color.Red;
+                    break;
+                case Gra.Odp.ZaDuzo:
+                    labelWynik.Text = "Za dużo!";
+                    labelWynik.ForeColor = Color.Red;
+                    break;
+                case Gra.Odp.Trafiono:
+                    labelWynik.Text = "TRAFIONO!";
+                    labelWynik.ForeColor = Color.Green;
+                    WyswietlStatystyki();
+                    break;
             }
-            else
-            {
-                int propozycja = Convert.ToInt32(textBoxPropozycja.Text);
-                if (propozycja > rand)
-                {
-                    wynik.ForeColor = Color.Red;
-                    wynik.Text = "Za dużo";
-                    ruchy++;
-                }
-                else
-               if (propozycja < rand)
-                {
-                    wynik.ForeColor = Color.Red;
-                    wynik.Text = "Za mało";
-                    ruchy++;
-                }
-                else
-                {
-                    wynik.ForeColor = Color.Green;
-                    wynik.Text = "Wygrałeś!";
-                    textBoxPropozycja.Enabled = false;
-                    buttonSprawdz.Enabled = false;
-                    buttonPrzerwij.Enabled = false;
-                    buttonHistoria.Visible = true;
-                    buttonNowaGra.Enabled = true;
-                    losowanieStart.Enabled = true;
-
-                    //MessageBox.Show(ruchy.ToString());
-                }
-            }
-           
+            
 
         }
 
@@ -143,6 +118,17 @@ namespace GraGUI
         private void textBoxPropozycja_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             int propozycja = Convert.ToInt32(textBoxPropozycja);
+        }
+
+        private void labelStatystyki_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void WyswietlStatystyki()
+        {
+            groupBoxStatystyki.Visible = true;
+            labelStatystyki1.Text = $"Liczba ruchów: {g.Historia.Count}";
+            labelStatystyki2.Text = $"Czas gry: {g.AktualnyCzas}";
         }
     }
 }

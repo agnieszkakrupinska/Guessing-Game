@@ -42,10 +42,13 @@
             this.textBoxPropozycja = new System.Windows.Forms.MaskedTextBox();
             this.buttonSprawdz = new System.Windows.Forms.Button();
             this.losowanieStart = new System.Windows.Forms.GroupBox();
-            this.wynik = new System.Windows.Forms.Label();
-            this.buttonHistoria = new System.Windows.Forms.Button();
+            this.labelWynik = new System.Windows.Forms.Label();
+            this.groupBoxStatystyki = new System.Windows.Forms.GroupBox();
+            this.labelStatystyki2 = new System.Windows.Forms.Label();
+            this.labelStatystyki1 = new System.Windows.Forms.Label();
             this.groupBoxLosuj.SuspendLayout();
             this.losowanieStart.SuspendLayout();
+            this.groupBoxStatystyki.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonNowaGra
@@ -168,7 +171,7 @@
             // 
             // losowanieStart
             // 
-            this.losowanieStart.Controls.Add(this.wynik);
+            this.losowanieStart.Controls.Add(this.labelWynik);
             this.losowanieStart.Controls.Add(this.labelTextPropozycja);
             this.losowanieStart.Controls.Add(this.buttonSprawdz);
             this.losowanieStart.Controls.Add(this.textBoxPropozycja);
@@ -181,32 +184,53 @@
             this.losowanieStart.Visible = false;
             this.losowanieStart.Enter += new System.EventHandler(this.groupBox1_Enter_1);
             // 
-            // wynik
+            // labelWynik
             // 
-            this.wynik.AutoSize = true;
-            this.wynik.Location = new System.Drawing.Point(2, 61);
-            this.wynik.Name = "wynik";
-            this.wynik.Size = new System.Drawing.Size(73, 13);
-            this.wynik.TabIndex = 7;
-            this.wynik.Text = "za dużo/mało";
-            this.wynik.Visible = false;
+            this.labelWynik.AutoSize = true;
+            this.labelWynik.Location = new System.Drawing.Point(2, 61);
+            this.labelWynik.Name = "labelWynik";
+            this.labelWynik.Size = new System.Drawing.Size(73, 13);
+            this.labelWynik.TabIndex = 7;
+            this.labelWynik.Text = "za dużo/mało";
+            this.labelWynik.Visible = false;
             // 
-            // buttonHistoria
+            // groupBoxStatystyki
             // 
-            this.buttonHistoria.Location = new System.Drawing.Point(12, 255);
-            this.buttonHistoria.Name = "buttonHistoria";
-            this.buttonHistoria.Size = new System.Drawing.Size(75, 23);
-            this.buttonHistoria.TabIndex = 8;
-            this.buttonHistoria.Text = "Historia";
-            this.buttonHistoria.UseVisualStyleBackColor = true;
-            this.buttonHistoria.Visible = false;
+            this.groupBoxStatystyki.Controls.Add(this.labelStatystyki2);
+            this.groupBoxStatystyki.Controls.Add(this.labelStatystyki1);
+            this.groupBoxStatystyki.Location = new System.Drawing.Point(9, 244);
+            this.groupBoxStatystyki.Name = "groupBoxStatystyki";
+            this.groupBoxStatystyki.Size = new System.Drawing.Size(229, 100);
+            this.groupBoxStatystyki.TabIndex = 9;
+            this.groupBoxStatystyki.TabStop = false;
+            this.groupBoxStatystyki.Text = "Statystyki";
+            this.groupBoxStatystyki.Visible = false;
+            // 
+            // labelStatystyki2
+            // 
+            this.labelStatystyki2.AutoSize = true;
+            this.labelStatystyki2.Location = new System.Drawing.Point(8, 45);
+            this.labelStatystyki2.Name = "labelStatystyki2";
+            this.labelStatystyki2.Size = new System.Drawing.Size(35, 13);
+            this.labelStatystyki2.TabIndex = 1;
+            this.labelStatystyki2.Text = "label1";
+            // 
+            // labelStatystyki1
+            // 
+            this.labelStatystyki1.AutoSize = true;
+            this.labelStatystyki1.Location = new System.Drawing.Point(8, 20);
+            this.labelStatystyki1.Name = "labelStatystyki1";
+            this.labelStatystyki1.Size = new System.Drawing.Size(50, 13);
+            this.labelStatystyki1.TabIndex = 0;
+            this.labelStatystyki1.Text = "statystyki";
+            this.labelStatystyki1.Click += new System.EventHandler(this.labelStatystyki_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(265, 368);
-            this.Controls.Add(this.buttonHistoria);
+            this.Controls.Add(this.groupBoxStatystyki);
             this.Controls.Add(this.losowanieStart);
             this.Controls.Add(this.buttonPrzerwij);
             this.Controls.Add(this.groupBoxLosuj);
@@ -218,6 +242,8 @@
             this.groupBoxLosuj.PerformLayout();
             this.losowanieStart.ResumeLayout(false);
             this.losowanieStart.PerformLayout();
+            this.groupBoxStatystyki.ResumeLayout(false);
+            this.groupBoxStatystyki.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -237,7 +263,9 @@
         private System.Windows.Forms.MaskedTextBox textBoxPropozycja;
         private System.Windows.Forms.Button buttonSprawdz;
         private System.Windows.Forms.GroupBox losowanieStart;
-        private System.Windows.Forms.Label wynik;
-        private System.Windows.Forms.Button buttonHistoria;
+        private System.Windows.Forms.Label labelWynik;
+        private System.Windows.Forms.GroupBox groupBoxStatystyki;
+        private System.Windows.Forms.Label labelStatystyki1;
+        private System.Windows.Forms.Label labelStatystyki2;
     }
 }

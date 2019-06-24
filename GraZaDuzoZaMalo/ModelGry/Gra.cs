@@ -6,8 +6,9 @@ namespace ModelGry
     public partial class Gra
     {
         // subtypes
-        public enum Odp { ZaMalo = -1, Trafiono = 0, ZaDuzo = 1 }
+        public enum Odp { ZaMalo, Trafiono, ZaDuzo }
         public enum State { Trwa, Poddana, Odgadnieta }
+        
 
         // fields
         public readonly int ZakresOd;

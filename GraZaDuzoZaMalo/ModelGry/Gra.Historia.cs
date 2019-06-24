@@ -14,6 +14,18 @@ namespace ModelGry
                 return historia;
             }
         }
+          public TimeSpan? AktualnyCzas
+        {
+            get
+            {
+                if (historia is null)
+                    return null;
+                else if (StanGry == State.Trwa)
+                    return DateTime.Now - historia[0].kiedy;
+                else
+                    return historia[historia.Count - 1].kiedy - historia[0].kiedy;
+            }
+        }
 
         // klasa wewnętrzna
         public class Ruch
