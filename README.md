@@ -10,8 +10,8 @@
 In Guessing Game the computer generates a random number that the user must guess.
 While guessing, the computer suggests whether the given number is too big or too small from the generated one.
 When the number is guessed, statistics are displayed in which there is the time you spent guessing and the number of guessing attempts.
-During the game, you can give up at any moment and start again.
-
+During the game, user can give up at any moment and start again.\
+Guessing Game have GUI which was created by Windows Forms, also user can play this game by console.
 
 
 ## Technologies
